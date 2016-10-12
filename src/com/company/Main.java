@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -12,10 +13,13 @@ public class Main {
     }
 
     private void reverseWords(String[] stringArray) {
+        int index;
         for (String string : stringArray) {
-            StringBuilder stringBuilder = new StringBuilder(string);
-            stringBuilder.reverse();
-            System.out.print(stringBuilder + " ");
+            for (int i = 0; i < string.length(); i++) {
+                index = string.length() - 1 - i;
+                System.out.print(string.charAt(index));
+            }
+            System.out.print(" ");
         }
     }
 
