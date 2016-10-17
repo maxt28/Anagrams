@@ -1,30 +1,29 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private static final String SPACE_CHAR = "\\s+";
+    private static final int ARRAY_START_INDEX = 0;
 
     public static void main(String[] args) {
-        Main m = new Main();
-        String inputString = m.readInput();
-        String[] separatedWords = m.splitString(inputString);
-        m.reverseWords(separatedWords);
+        Main main = new Main();
+        String inputString = main.readInput();
+        String[] separatedWords = main.splitString(inputString);
+        main.reverseWords(separatedWords);
     }
 
     private void reverseWords(String[] stringArray) {
-        int index;
+        StringBuffer stringBuffer = new StringBuffer();
         for (String string : stringArray) {
-            for (int i = 0; i < string.length(); i++) {
-                index = string.length() - 1 - i;
-                System.out.print(string.charAt(index));
-            }
-            System.out.print(" ");
+            stringBuffer.insert(ARRAY_START_INDEX, string);
+            System.out.print(stringBuffer.reverse() + " ");
+            stringBuffer.delete(ARRAY_START_INDEX, stringBuffer.length());
         }
     }
 
     private String[] splitString(String string) {
-        return string.split("\\s+");
+        return string.split(SPACE_CHAR);
     }
 
     private String readInput() {
